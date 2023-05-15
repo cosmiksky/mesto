@@ -1,4 +1,4 @@
-.profile__addButton {
+.profile__add-button {
     width: 150px;
     height: 50px;
     border: 2px solid #FFF;
@@ -9,14 +9,15 @@
     background-image: url(../../../images/profile_plus.png);
     background-position: center;
     background-repeat: no-repeat;
+    cursor: pointer;
 }
 
-.profile__addButton:hover {
+.profile__add-button:hover {
     opacity: .6;
 }
 
 @media screen and (max-width: 1279px) {
-    .profile__addButton {
+    .profile__add-button {
         width: 282px;
         margin: 0 auto 0 auto;
         background-size: 16px 16px;
