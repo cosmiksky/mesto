@@ -1,4 +1,4 @@
-.elements__card {
+.elements__list {
     padding: 0;
     margin: 0;
     display: flex;
@@ -8,7 +8,7 @@
 }
 
 @media screen and (max-width: 1279px) {
-    .elements__card {
+    .elements__list {
         justify-content: center;
     }    
 }
