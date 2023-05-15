@@ -3,15 +3,17 @@
 ### Обзор
 
 * Figma
-* Картинки
+* Description
+* GitHub Pages
 
 **Figma**
 
 * [Ссылка на макет в Figma](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)
 
-**Картинки**
+**Description**
 
-Доставать картинки предстоит из Фигмы. Это расхожая практика, поэтому полезно потренироваться.
-Не забудьте [оптимизировать картинки](https://tinypng.com/), чтобы ваш сайт загружался быстрее.
+This project presents an interactive page where you can add and delete photos, as well as change your profile information, and of course rate photos as likes. Moreover, the Bam file structure is implemented here, the classic Nested system is used as a scheme.
 
-Удачи!
+**GitHub Pages**
+
+* [Link GitHub Pages]()
