@@ -16,8 +16,4 @@ This project presents an interactive page where you can add and delete photos, a
 
 **GitHub Pages**
 
-<<<<<<< HEAD
 * [Link GitHub Pages](https://cosmiksky.github.io/mesto/)
-=======
-* [Link GitHub Pages](https://cosmiksky.github.io/mesto/)
->>>>>>> 6b9d6a7b58bf5c1115d8871c292399efbead79f4
