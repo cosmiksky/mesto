@@ -6,20 +6,18 @@ const nameInput = document.querySelector('#name-input');
 const pageSubtitle = document.querySelector('.page__subtitle');
 const fieldInput = document.querySelector('#field-input');
 const editForm = document.querySelector('#edit-form');
-const likeButton = document.querySelectorAll('.element__group');
 
 
 
 openPopupButton.addEventListener('click', function() {
     openPopup(editPopup);
+    nameInput.value = pageTitle.textContent;
+    fieldInput.value = pageSubtitle.textContent;
 });
 
 closePopupButton.addEventListener('click', function() {
     closePopup(editPopup);
 });
-
-nameInput.value = pageTitle.textContent;
-fieldInput.value = pageSubtitle.textContent;
 
 editForm.addEventListener('submit', function(event){
     event.preventDefault();
@@ -35,7 +33,3 @@ function openPopup(popup) {
 function closePopup(popup) {
     popup.classList.remove('popup_is-open');
 };
-
-likeButton.addEventListener('click', function(){
-    likeButton.classList.add('element__group_active');
-});
