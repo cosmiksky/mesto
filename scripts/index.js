@@ -1,9 +1,9 @@
 const openPopupButton = document.querySelector('#open-popup-editButton');
 const closePopupButton = document.querySelector('#close-popup-button');
 const editPopup = document.querySelector('#edit-popup');
-const pageTitle = document.querySelector('.page__title');
+const pageTitle = document.querySelector('.profile__title');
 const nameInput = document.querySelector('#name-input');
-const pageSubtitle = document.querySelector('.page__subtitle');
+const pageSubtitle = document.querySelector('.profile__subtitle');
 const fieldInput = document.querySelector('#field-input');
 const editForm = document.querySelector('#edit-form');
 

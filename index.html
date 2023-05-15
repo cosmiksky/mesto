@@ -18,49 +18,49 @@
           <img class="profile__image" src="./images/image_profile.jpg" alt="Аватарка">
           <div class="profile__info">
             <h1 class="profile__title page__title">Жак-Ив Кусто</h1>
-            <button id="open-popup-editButton" class="profile__editButton"></button>
-            <p class="profile__subtitle page__subtitle">Исследователь океана</p>
+            <button id="open-popup-editButton" class="profile__edit-button" type="button"></button>
+            <p class="profile__subtitle">Исследователь океана</p>
           </div>
         </div>
         </div>
-        <button class="profile__addButton"></button>
+        <button type="button" class="profile__add-button"></button>
       </section>
       <section class="elements">
-        <ul class="elements__card">
+        <ul class="elements__list">
           <li class="element">
-            <img class="element__maskGroup" src="./images/element_church.png" alt="Старая церковь">
+            <img class="element__mask-group" src="./images/element_church.png" alt="Старая церковь">
             <h2 class="element__title">Карачаевск
-              <button class="element__group"></button>
+              <button class="element__group" type="button"></button>
             </h2>
           </li>
           <li class="element">
-            <img class="element__maskGroup" src="./images/element_field.png" alt="Закат в поле">
+            <img class="element__mask-group" src="./images/element_field.png" alt="Закат в поле">
             <h2 class="element__title">Гора Эльбрус
-              <button class="element__group"></button>
+              <button class="element__group" type="button"></button>
             </h2>
           </li>
           <li class="element">
-            <img class="element__maskGroup" src="./images/element_mountains.png" alt="Горы">
+            <img class="element__mask-group" src="./images/element_mountains.png" alt="Горы">
             <h2 class="element__title">Домбай
-              <button class="element__group"></button>
+              <button class="element__group" type="button"></button>
             </h2>
           </li>
           <li class="element">
-            <img class="element__maskGroup" src="./images/element_field.png" alt="Закат в поле">
+            <img class="element__mask-group" src="./images/element_field.png" alt="Закат в поле">
             <h2 class="element__title">Гора Эльбрус
-              <button class="element__group"></button>
+              <button class="element__group" type="button"></button>
             </h2>
           </li>
           <li class="element">
-            <img class="element__maskGroup" src="./images/element_mountains.png" alt="Горы">
+            <img class="element__mask-group" src="./images/element_mountains.png" alt="Горы">
             <h2 class="element__title">Домбай
-              <button class="element__group"></button>
+              <button type="button" class="element__group" type="button"></button>
             </h2>
           </li>
           <li class="element">
-            <img class="element__maskGroup" src="./images/element_church.png" alt="Старая церковь">
+            <img class="element__mask-group" src="./images/element_church.png" alt="Старая церковь">
             <h2 class="element__title">Карачаево-Ч...
-              <button class="element__group"></button>
+              <button type="button" class="element__group" type="button"></button>
             </h2>
           </li>
         </ul>
@@ -71,13 +71,13 @@
     </footer>
     <div id="edit-popup" class="popup">
       <div class="popup__content">
-        <form id="edit-form" class="popup__form">
+        <form id="edit-form" name="form" class="popup__form">
           <h2 class="popup__title ">Редактировать профиль</h2>
-          <input id="name-input" type="text" class="popup__input">
-          <input id="field-input" type="text" class="popup__input">
+          <input id="name-input" type="text" name="nickname" class="popup__input">
+          <input id="field-input" type="text" name="job" class="popup__input">
           <button type="submit" class="popup__saveButton">Сохранить</button>
         </form>
-        <button id="close-popup-button" class="popup__close-button"></button>
+        <button id="close-popup-button" type="button" class="popup__close-button"></button>
       </div>
   </body>
 </html>
