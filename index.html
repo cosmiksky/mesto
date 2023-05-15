@@ -2,10 +2,11 @@
 <html lang="ru">
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device=width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="keywords" content="html,css,javascript">
     <link rel="stylesheet" href="./pages/index.css">
     <script src="./scripts/index.js" defer></script>
+    <title>Проект Место</title>
   </head>
   <body class="page">
     <header class="header">
@@ -21,16 +22,6 @@
             <p class="profile__subtitle page__subtitle">Исследователь океана</p>
           </div>
         </div>
-        <div id="edit-popup" class="popup">
-          <div class="popup__content">
-            <form id="edit-form" class="popup__form">
-              <h2 class="popup__title ">Редактировать профиль</h2>
-              <input id="name-input" type="text" class="popup__input">
-              <input id="field-input" type="text" class="popup__input">
-              <button type="submit" class="popup__saveButton">Сохранить</button>
-            </form>
-            <button id="close-popup-button" class="popup__close-button"></button>
-          </div>
         </div>
         <button class="profile__addButton"></button>
       </section>
@@ -78,5 +69,15 @@
     <footer class="footer">
       <p class="footer__copyright">© 2023 Mesto Russia</p>
     </footer>
+    <div id="edit-popup" class="popup">
+      <div class="popup__content">
+        <form id="edit-form" class="popup__form">
+          <h2 class="popup__title ">Редактировать профиль</h2>
+          <input id="name-input" type="text" class="popup__input">
+          <input id="field-input" type="text" class="popup__input">
+          <button type="submit" class="popup__saveButton">Сохранить</button>
+        </form>
+        <button id="close-popup-button" class="popup__close-button"></button>
+      </div>
   </body>
 </html>
