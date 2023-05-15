@@ -20,5 +20,6 @@
         padding-bottom: 34px;
         row-gap: 14px;
         position: relative;
+        flex-direction: column;
     }
 }
