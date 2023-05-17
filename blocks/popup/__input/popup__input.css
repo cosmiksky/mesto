@@ -1,11 +1,13 @@
 .popup__input {
     box-sizing: border-box;
-    font-size: inherit;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
     max-width: 358px;
     border: none;
     border-bottom: 1px solid rgba(0, 0, 0, .2);
     margin-bottom: 30px;
-    padding: 0;
+    padding: 0 0 10px 0;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
