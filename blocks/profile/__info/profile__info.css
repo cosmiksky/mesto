@@ -24,5 +24,7 @@
         row-gap: 14px;
         position: relative;
         flex-direction: column;
+        max-width: 282px;
+        margin: 0;
     }
 }
