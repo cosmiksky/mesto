@@ -22,7 +22,7 @@
             <p class="profile__subtitle">Исследователь океана</p>
           </div>
         </div>
-        <button type="button" class="profile__add-button"></button>
+        <button id="open-popup-addButton" type="button" class="profile__add-button"></button>
       </section>
       <section class="elements">
         <ul class="elements__list">
@@ -53,6 +53,16 @@
         </form>
         <button id="close-popup-button" type="button" class="popup__close-button"></button>
       </div>
+      <div id="add-popup" class="popup">
+        <div class="popup__content">
+          <form id="add-form" name="form" class="popup__form">
+            <h2 class="popup__title ">Новое место</h2>
+            <input id="name-input" type="text" name="nickname" class="popup__input">
+            <input id="link-input" type="text" name="link" class="popup__input">
+            <button type="submit" class="popup__save-button">Создать</button>
+          </form>
+          <button id="close-popup-button" type="button" class="popup__close-button"></button>
+        </div>
     </div>
   </body>
 </html>

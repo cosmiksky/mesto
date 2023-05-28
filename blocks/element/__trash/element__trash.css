@@ -10,3 +10,7 @@
     background-position: center;
     background-repeat: no-repeat;
 }
+
+.element__trash:hover {
+    opacity: .6;
+}
