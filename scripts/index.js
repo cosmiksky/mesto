@@ -7,7 +7,57 @@ const profileSubtitle = document.querySelector('.profile__subtitle');
 const fieldInput = document.querySelector('#field-input');
 const editForm = document.querySelector('#edit-form');
 
+const initialCards = [
+    {
+      name: 'Архыз',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+    },
+    {
+      name: 'Челябинская область',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    },
+    {
+      name: 'Иваново',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+    },
+    {
+      name: 'Камчатка',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+    },
+    {
+      name: 'Холмогорский район',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+    },
+    {
+      name: 'Байкал',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+    }
+  ];
 
+const template = document.querySelector('#template__el');
+const templateContent = template.content;
+const elementItem = templateContent.querySelector('.element');
+const elementsList = document.querySelector('.elements__list');
+const likeButton = template.querySelector('.element__group');
+
+initialCards.forEach(function(item){
+    const newElementItem = createCard(item);
+    elementsList.prepend(newElementItem);
+});
+
+function createCard(item){
+    const newElementItem = elementItem.cloneNode(true);
+    const titleElement = newElementItem.querySelector('.element__title');
+    const imageCard = newElementItem.querySelector('.element__mask-group');
+    const likeButton = newElementItem.querySelector('.element__group');
+    titleElement.textContent = item.name;
+    imageCard.setAttribute('src', item.link);
+    likeButton.addEventListener ('click', function(event) {
+        event.target.classList.toggle('element__group_active');
+    });
+
+    return newElementItem;
+};
 
 openPopupButton.addEventListener('click', function() {
     openPopup(editPopup);

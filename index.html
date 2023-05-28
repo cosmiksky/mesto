@@ -26,45 +26,19 @@
       </section>
       <section class="elements">
         <ul class="elements__list">
-          <li class="element">
-            <img class="element__mask-group" src="./images/element_church.png" alt="Старая церковь">
-            <h2 class="element__title">Карачаевск
-              <button class="element__group" type="button"></button>
-            </h2>
-          </li>
-          <li class="element">
-            <img class="element__mask-group" src="./images/element_field.png" alt="Закат в поле">
-            <h2 class="element__title">Гора Эльбрус
-              <button class="element__group" type="button"></button>
-            </h2>
-          </li>
-          <li class="element">
-            <img class="element__mask-group" src="./images/element_mountains.png" alt="Горы">
-            <h2 class="element__title">Домбай
-              <button class="element__group" type="button"></button>
-            </h2>
-          </li>
-          <li class="element">
-            <img class="element__mask-group" src="./images/element_field.png" alt="Закат в поле">
-            <h2 class="element__title">Гора Эльбрус
-              <button class="element__group" type="button"></button>
-            </h2>
-          </li>
-          <li class="element">
-            <img class="element__mask-group" src="./images/element_mountains.png" alt="Горы">
-            <h2 class="element__title">Домбай
-              <button type="button" class="element__group"></button>
-            </h2>
-          </li>
-          <li class="element">
-            <img class="element__mask-group" src="./images/element_church.png" alt="Старая церковь">
-            <h2 class="element__title">Карачаево-Ч...
-              <button type="button" class="element__group"></button>
-            </h2>
-          </li>
+
         </ul>
       </section>
     </main>
+    <template id="template__el">
+      <li class="element">
+        <img class="element__mask-group" alt="картинка">
+        <div class="element__container">
+        <h2 class="element__title"></h2>
+        <button class="element__group" type="button"></button>
+        </div>
+      </li>
+    </template>
     <footer class="footer">
       <p class="footer__copyright">© 2023 Mesto Russia</p>
     </footer>
