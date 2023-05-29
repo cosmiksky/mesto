@@ -50,10 +50,14 @@ function createCard(item){
     const titleElement = newElementItem.querySelector('.element__title');
     const imageCard = newElementItem.querySelector('.element__mask-group');
     const likeButton = newElementItem.querySelector('.element__group');
+    const deleteButton = newElementItem.querySelector('.element__trash');
     titleElement.textContent = item.name;
     imageCard.setAttribute('src', item.link);
     likeButton.addEventListener ('click', function(event) {
         event.target.classList.toggle('element__group_active');
+    });
+    deleteButton.addEventListener('click', function(evt) {
+      evt.target.closest('.element').remove();
     });
 
     return newElementItem;
