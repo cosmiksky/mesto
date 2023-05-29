@@ -13,6 +13,10 @@
     white-space: nowrap;
 }
 
+.popup__input::placeholder {
+    color: #C4C4C4;
+}
+
 @media screen and (max-width: 1279px) {
     .popup__input {
         max-width: 238px;
