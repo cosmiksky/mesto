@@ -42,18 +42,20 @@ const addForm = document.querySelector('#add-form');
 const openPopupAdd = document.querySelector('#open-popup-addButton');
 const addPopup = document.querySelector('#add-popup');
 const closeButtonAdd = document.querySelector('#close-popup-button-add');
+const inputPlace = template.querySelector('#place-input');
+const inputLink = template.querySelector('#link-input');
 
-initialCards.forEach(function(item){
-    const newElementItem = createCard(item);
+initialCards.forEach(function(newCard){
+    const newElementItem = createCard(newCard);
     elementsList.prepend(newElementItem);
 });
 
-function createCard(item){
+function createCard(newCard){
     const newElementItem = elementItem.cloneNode(true);
     const titleElement = newElementItem.querySelector('.element__title');
-    titleElement.textContent = item.name;
+    titleElement.textContent = newCard.name;
     const imageCard = newElementItem.querySelector('.element__mask-group');
-    imageCard.src = item.link;
+    imageCard.src = newCard.link;
     const likeButton = newElementItem.querySelector('.element__group');
     const deleteButton = newElementItem.querySelector('.element__trash');
     likeButton.addEventListener ('click', function(event) {
@@ -74,14 +76,17 @@ addForm.addEventListener('submit', function(event) {
 
   const form = event.target;
   const formData = new FormData(form);
-  const values = Object.fromEntries(formData);
+  const Card = Object.fromEntries(formData);
 
-  const valueCard = values['place'];
-  const valueImg = values['link'];
+  const newCard = {
+    name: Card['place'],
+    link: Card['link']
+  };
 
-  const newElementItem = createCard(valueCard,valueImg);
+  const newElementItem = createCard(newCard);
   elementsList.prepend(newElementItem);
   form.reset();
+  closePopup(addPopup);
 });
 
 openPopupButton.addEventListener('click', function() {
