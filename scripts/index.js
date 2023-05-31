@@ -51,11 +51,11 @@ initialCards.forEach(function(item){
 function createCard(item){
     const newElementItem = elementItem.cloneNode(true);
     const titleElement = newElementItem.querySelector('.element__title');
+    titleElement.textContent = item.name;
     const imageCard = newElementItem.querySelector('.element__mask-group');
+    imageCard.src = item.link;
     const likeButton = newElementItem.querySelector('.element__group');
     const deleteButton = newElementItem.querySelector('.element__trash');
-    titleElement.textContent = item.name;
-    imageCard.src = item.link;
     likeButton.addEventListener ('click', function(event) {
       event.target.classList.toggle('element__group_active');
     });
@@ -71,15 +71,17 @@ closeButtonAdd.addEventListener('click', () => closePopup(addPopup));
 
 addForm.addEventListener('submit', function(event) {
   event.preventDefault();
+
   const form = event.target;
   const formData = new FormData(form);
   const values = Object.fromEntries(formData);
 
-  const valueCard = values['place-input'];
-  const valueImg = values['link-input'];
+  const valueCard = values['place'];
+  const valueImg = values['link'];
 
   const newElementItem = createCard(valueCard,valueImg);
   elementsList.prepend(newElementItem);
+  form.reset();
 });
 
 openPopupButton.addEventListener('click', function() {
