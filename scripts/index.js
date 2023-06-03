@@ -79,6 +79,7 @@ function createCard(newCard){
     return newElementItem;
 };
 
+buttonClosePopupImage.addEventListener('click', () => closePopup(buttonOpenPopupImg));
 buttonOpenPopupAdd.addEventListener('click', () => openPopup(addPopup));
 buttonClosePopupAdd.addEventListener('click', () => closePopup(addPopup));
 
