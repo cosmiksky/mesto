@@ -69,6 +69,7 @@ function createCard(newCard){
     deleteButton.addEventListener('click', function(evt) {
       evt.target.closest('.element').remove();
     });
+    imageCard.setAttribute('alt',newCard.name);
     imageCard.addEventListener('click', function() {
       popupImage.src = imageCard.src;
       popupCaption.textContent = titleElement.textContent;
@@ -77,8 +78,6 @@ function createCard(newCard){
 
     return newElementItem;
 };
-
-uttonClosePopupImage.addEventListener('click', () => closePopup(openPopupImg));
 
 buttonOpenPopupAdd.addEventListener('click', () => openPopup(addPopup));
 buttonClosePopupAdd.addEventListener('click', () => closePopup(addPopup));
