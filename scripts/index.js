@@ -44,9 +44,8 @@ const addPopup = document.querySelector('#add-popup');
 const closeButtonAdd = document.querySelector('#close-popup-button-add');
 const inputPlace = template.querySelector('#place-input');
 const inputLink = template.querySelector('#link-input');
-const openPopupImg = document.querySelector('.popup__photo');
+const openPopupImg = document.querySelector('#photo-popup');
 const closeBtnImg = document.querySelector('#close-popup-button-img');
-const imgPopup = document.querySelector('#photo-popup');
 
 initialCards.forEach(function(newCard){
     const newElementItem = createCard(newCard);
@@ -79,7 +78,7 @@ function createCard(newCard){
     return newElementItem;
 };
 
-closeBtnImg.addEventListener('click', () => closePopup(imgPopup));
+closeBtnImg.addEventListener('click', () => closePopup(openPopupImg));
 
 openPopupAdd.addEventListener('click', () => openPopup(addPopup));
 closeButtonAdd.addEventListener('click', () => closePopup(addPopup));

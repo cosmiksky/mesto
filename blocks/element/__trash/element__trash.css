@@ -9,6 +9,7 @@
     background-color: rgba(0,0,0,0);
     background-position: center;
     background-repeat: no-repeat;
+    cursor: pointer;
 }
 
 .element__trash:hover {
