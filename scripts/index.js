@@ -49,6 +49,16 @@ const buttonClosePopupImage = document.querySelector('#close-popup-button-img');
 const popupImage = document.querySelector('.popup__image');
 const popupCaption = document.querySelector('.popup__caption');
 
+const buttonClosePopup = document.querySelectorAll('.popup');
+
+buttonClosePopup.forEach((popup) => {
+  document.addEventListener('keydown', function (evt) {
+    if (evt.key === 'Escape') {
+      closePopup(popup);
+    }
+  });
+});
+
 initialCards.forEach(function(newCard){
     const newElementItem = createCard(newCard);
     elementsList.prepend(newElementItem);
