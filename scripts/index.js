@@ -7,33 +7,6 @@ const profileSubtitle = document.querySelector('.profile__subtitle');
 const fieldInput = document.querySelector('#field-input');
 const editForm = document.querySelector('#edit-form');
 
-const initialCards = [
-    {
-      name: 'Архыз',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-      name: 'Челябинская область',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-      name: 'Иваново',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-      name: 'Камчатка',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-      name: 'Холмогорский район',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-      name: 'Байкал',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-  ];
-
 const template = document.querySelector('#template__el');
 const templateContent = template.content;
 const elementItem = templateContent.querySelector('.element');
@@ -48,7 +21,6 @@ const buttonOpenPopupImg = document.querySelector('#photo-popup');
 const buttonClosePopupImage = document.querySelector('#close-popup-button-img');
 const popupImage = document.querySelector('.popup__image');
 const popupCaption = document.querySelector('.popup__caption');
-
 const buttonClosePopup = document.querySelectorAll('.popup');
 
 buttonClosePopup.forEach((popup) => {
@@ -58,6 +30,8 @@ buttonClosePopup.forEach((popup) => {
     }
   });
 });
+
+
 
 initialCards.forEach(function(newCard){
     const newElementItem = createCard(newCard);
