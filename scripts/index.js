@@ -31,7 +31,14 @@ buttonClosePopup.forEach((popup) => {
   });
 });
 
-
+buttonClosePopup.forEach((popup) => {
+  popup.addEventListener('click', function(evt) {
+    if (evt.currentTarget === evt.target) {
+      closePopup(popup);
+    } else
+    popup.classList.remove('popup_is-open');
+  });
+});
 
 initialCards.forEach(function(newCard){
     const newElementItem = createCard(newCard);
