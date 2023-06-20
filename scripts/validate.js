@@ -1,4 +1,4 @@
-const form = document.querySelector('.popup__form');
+const form = document.querySelectorAll('.popup__form');
 
 const validators = {
     nickname: validateNickname,
@@ -63,9 +63,9 @@ function enableValidation(form, validators, classNames, handleSubmit, handleErro
     };
 
     form.addEventListener('input', e => {
-        const key = e.target.name;
-        const value = e.target.value;
         const input = e.target;
+        const key = input.name;
+        const value = input.value;
 
         const error = validate(key, value);
 

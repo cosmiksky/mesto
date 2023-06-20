@@ -25,7 +25,7 @@ const buttonClosePopup = document.querySelectorAll('.popup');
 const formsPopup = document.querySelectorAll('.popup__form');
 
 formsPopup.forEach((form) => {
-  enableValidation(form, validators, classNames)
+  enableValidation(form, validators, classNames, handleSubmit, handleError);
 });
 
 buttonClosePopup.forEach((popup) => {
