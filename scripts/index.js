@@ -22,11 +22,7 @@ const buttonClosePopupImage = document.querySelector('#close-popup-button-img');
 const popupImage = document.querySelector('.popup__image');
 const popupCaption = document.querySelector('.popup__caption');
 const buttonClosePopup = document.querySelectorAll('.popup');
-const formsPopup = document.querySelectorAll('.popup__form');
-
-formsPopup.forEach((form) => {
-  enableValidation(form, validators, classNames, handleSubmit, handleError);
-});
+const formsPopup = document.querySelectorAll('.popup__form')
 
 buttonClosePopup.forEach((popup) => {
   document.addEventListener('keydown', function (evt) {

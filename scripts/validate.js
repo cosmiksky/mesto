@@ -1,178 +1,60 @@
-const form = document.querySelectorAll('.popup__form');
-
-const validators = {
-    nickname: validateNickname,
-    job: validateJob,
-    place: validatePlace,
-    link: validateLink
+const showInputError = (formElement, inputElement, errorMessage) => {
+    const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+    inputElement.classList.add('popup__input_type_error');
+    errorElement.textContent = errorMessage;
+    errorElement.classList.add('popup__error_visible');
+};
+  
+const hideInputError = (formElement, inputElement) => {
+    const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+    inputElement.classList.remove('popup__input_type_error');
+    errorElement.classList.remove('popup__error_visible');
+    errorElement.textContent = '';
+};
+  
+const isValid = (formElement, inputElement) => {
+    if (!inputElement.validity.valid) {
+      showInputError(formElement, inputElement, inputElement.validationMessage);
+    } else {
+      hideInputError(formElement, inputElement);
+    }
 };
 
-const classNames = {
-    input: 'popup__input',
-    inputInvalid: 'popup__input_invalid',
-    error: 'popup__error'
+const setEventListeners = formElement => {
+    const inputList = Array.from(formElement.querySelectorAll('.popup__input'));
+    const buttonElement = formElement.querySelector('.popup__save-button');
+
+    inputList.forEach(inputElement => {
+      inputElement.addEventListener('input', () => {
+        isValid(formElement, inputElement);
+  
+        toggleButtonState(inputList, buttonElement);
+      });
+    });
 };
-
-function handleSubmit(values, e) {
-    e.preventDefault();
-    console.log(values);
-}
-
-function handleError() {
-    console.error('From error');
-}
-
-enableValidation(form, validators, classNames, handleSubmit, handleError);
-
-function enableValidation(form, validators, classNames, handleSubmit, handleError) {
-    const validate = (key, value) => {
-        const validator = validators[key];
-        return validator(value);
-    };
-
-    const getInputElement = key => {
-        return form.querySelector(`.${classNames.input}[name=${key}]`);
-    };
-
-    const getErrorElement = key => {
-        return form.querySelector(`.${classNames.error}[data-key=${key}]`);
-    };
-
-    const setError = (key, errorMessage) => {
-        const input = getInputElement(key);
-        input.classList.add(classNames.inputInvalid);
-
-        let errorEl = getErrorElement(key);
-        if (!errorEl) {
-            errorEl = document.createElement('p');
-            input.after(errorEl);
-        }
-        errorEl.textContent = errorMessage;
-        errorEl.classList.add(classNames.error);
-        errorEl.dataset.key = key;
-    };
-
-    const clearError = (key) => {
-        const input = getInputElement(key);
-        input.classList.remove(classNames.inputInvalid);
-
-        const errorEl = getErrorElement(key);
-        if (errorEl) {
-            errorEl.remove();
-        }
-    };
-
-    form.addEventListener('input', e => {
-        const input = e.target;
-        const key = input.name;
-        const value = input.value;
-
-        const error = validate(key, value);
-
-        if (!error) {
-            input.onblur = () => {
-                input.dataset.dirty = 'true';
-                input.onblur = null;
-            };
-            clearError(key);
-            return;
-        }
-
-        if (input.dataset.dirty === 'true') {
-            setError(key, error);
-            return;
-        }
-
-        input.onblur = () => {
-            input.dataset.dirty = 'true';
-            input.onblur = null;
-            setError(key, error);
-        };
+  
+const enableValidation = () => {
+    const formList = Array.from(document.querySelectorAll('.popup__form'));
+    formList.forEach(formElement => {
+      setEventListeners(formElement);
     });
-
-    form.addEventListener('submit', e => {
-        const formData = new FormData(e.currentTarget);
-        const values = Object.fromEntries(formData);
-
-        let isFormValid = true;
-
-        formData.forEach((value, key) => {
-            const input = getInputElement(key);
-            input.dataset.dirty = 'true';
-
-            const error = validate(key, value);
-
-            if (!error) {
-                clearError(key);
-                return;
-            }
-
-            setError(key, error);
-            isFormValid = false;
-        });
-
-        if(!isFormValid) {
-            e.preventDefault();
-            handleError();
-            return;
-        }
-        handleSubmit();
-        
+};
+  
+const hasInvalidInput = inputList => {
+    return inputList.some(inputElement => {
+      return !inputElement.validity.valid;
     });
-}
+};
+  
+const toggleButtonState = (inputList, buttonElement) => {
+    if (hasInvalidInput(inputList)) {
 
-function validateNickname(value) {
-    if (!value) {
-        return 'Введите имя пользователя';
+      buttonElement.classList.add('popup__save-button_disabled');
+      buttonElement.setAttribute('disabled', 'true');
+    } else {
+      buttonElement.classList.remove('popup__save-button_disabled');
+      buttonElement.removeAttribute('disabled');
     }
-
-    if (value.length < 2 || value.length > 40) {
-        return 'Имя пользователя должно быть от 2 до 40 символов';
-    }
-
-    return null;
-}
-
-function validateJob(value) {
-    if (!value) {
-        return 'Введите информацию о себе';
-    }
-
-    if (value.length < 2 || value.length > 200) {
-        return 'Информация о себе должна быть от 2 до 200 символов';
-    }
-
-    return null;
-}
-
-function validatePlace(value) {
-    if (!value) {
-        return 'Введите название места';
-    }
-
-    if (value.length < 2 || value.length > 30) {
-        return 'Название места должно быть от 2 до 30 символов';
-    }
-
-    return null;
-}
-
-function validateLink(value) {
-    const input = document.createElement('input');
-
-    input.type = 'url';
-    input.required = true;
-    input.value = value;
-
-    const isValid = input.checkValidity();
-
-    if (!value) {
-        return 'Введите ссылку';
-    }
-
-    if (!isValid) {
-        return 'Введите корректную ссылку';
-    }
-
-    return null;
-}
+  };
+  
+enableValidation();
