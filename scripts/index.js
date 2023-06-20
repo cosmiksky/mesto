@@ -22,6 +22,11 @@ const buttonClosePopupImage = document.querySelector('#close-popup-button-img');
 const popupImage = document.querySelector('.popup__image');
 const popupCaption = document.querySelector('.popup__caption');
 const buttonClosePopup = document.querySelectorAll('.popup');
+const formsPopup = document.querySelectorAll('.popup__form');
+
+formsPopup.forEach((form) => {
+  enableValidation(form, validators, classNames)
+});
 
 buttonClosePopup.forEach((popup) => {
   document.addEventListener('keydown', function (evt) {
@@ -33,10 +38,10 @@ buttonClosePopup.forEach((popup) => {
 
 buttonClosePopup.forEach((popup) => {
   popup.addEventListener('click', function(evt) {
-    if (evt.currentTarget === evt.target) {
+    const openPopup = document.querySelector('.popup_is-open');
+    if (evt.target === openPopup) {
       closePopup(popup);
-    } else
-    popup.classList.remove('popup_is-open');
+    } 
   });
 });
 
