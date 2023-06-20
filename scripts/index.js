@@ -34,7 +34,7 @@ buttonClosePopup.forEach((popup) => {
 
 buttonClosePopup.forEach((popup) => {
   popup.addEventListener('click', function(evt) {
-    if (!evt.currentTarget.classList.contains('popup__form')) {
+    if (!evt.currentTarget.classList.contains('popup__is-open')) {
       closePopup(popup);
     } 
   });
