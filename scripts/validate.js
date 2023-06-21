@@ -57,7 +57,7 @@ const toggleButtonState = (inputList, buttonElement) => {
     }
   };
   
-const variables = {
+const validators = {
     formSelector: '.popup__form',
     inputSelector: '.popup__input',
     submitButtonSelector: '.popup__submit-button',
@@ -66,4 +66,4 @@ const variables = {
     errorClass: 'popup__error'
 };
   
-enableValidation(variables);
+enableValidation(validators);

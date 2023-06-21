@@ -21,24 +21,32 @@ const buttonOpenPopupImg = document.querySelector('#photo-popup');
 const buttonClosePopupImage = document.querySelector('#close-popup-button-img');
 const popupImage = document.querySelector('.popup__image');
 const popupCaption = document.querySelector('.popup__caption');
-const buttonClosePopup = document.querySelectorAll('.popup');
-const formsPopup = document.querySelectorAll('.popup__form')
 
-buttonClosePopup.forEach((popup) => {
-  document.addEventListener('keydown', function (evt) {
-    if (evt.key === 'Escape') {
-      closePopup(popup);
-    }
-  });
-});
+const closePopupEsc = evt => {
+  const openedPopup = document.querySelector('.popup_is-open');
+  if (evt.key === 'Escape') {
+    closePopup(openedPopup);
+  }
+};
 
-buttonClosePopup.forEach((popup) => {
-  popup.addEventListener('click', function(evt) {
-    if (!evt.currentTarget.classList.contains('popup__is-open')) {
-      closePopup(popup);
-    } 
-  });
-});
+const closePopupOverlay = evt => {
+  const openedPopup = document.querySelector('.popup_is-open');
+  if (evt.currentTarget === evt.target) {
+    closePopup(openedPopup);
+  }
+};
+
+function openPopup(popup) {
+  popup.classList.add('popup_is-open');
+  document.addEventListener('keydown', closePopupEsc);
+  popup.addEventListener('click', closePopupOverlay);
+};
+
+function closePopup(popup) {
+  popup.classList.remove('popup_is-open');
+  document.removeEventListener('keydown', closePopupEsc);
+  popup.removeEventListener('click', closePopupOverlay);
+};
 
 initialCards.forEach(function(newCard){
     const newElementItem = createCard(newCard);
@@ -70,6 +78,7 @@ function createCard(newCard){
     return newElementItem;
 };
 
+buttonOpenPopupImg.addEventListener('click', () => closePopupOverlay(buttonOpenPopupImg));
 buttonClosePopupImage.addEventListener('click', () => closePopup(buttonOpenPopupImg));
 buttonOpenPopupAdd.addEventListener('click', () => openPopup(addPopup));
 buttonClosePopupAdd.addEventListener('click', () => closePopup(addPopup));
@@ -108,11 +117,3 @@ editForm.addEventListener('submit', function(event){
     profileSubtitle.textContent = fieldInput.value;
     closePopup(editPopup);
 });
-
-function openPopup(popup) {
-    popup.classList.add('popup_is-open');
-};
-
-function closePopup(popup) {
-    popup.classList.remove('popup_is-open');
-};
