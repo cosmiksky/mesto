@@ -38,12 +38,10 @@
       <div class="popup__content">
         <form id="edit-form" name="form" class="popup__form" novalidate>
           <h2 class="popup__title ">Редактировать профиль</h2>
-          <fieldset class="popup__fieldset">
           <input id="name-input" type="text" name="nickname" class="popup__input popup__input_type_nickname" minlength="2" maxlength="40" required>
           <span class="popup__error name-input-error"></span>
           <input id="field-input" type="text" name="job" class="popup__input popup__input_type_job" minlength="2" maxlength="200" required>
           <span class="popup__error field-input-error"></span>
-        </fieldset>
           <button type="submit" class="popup__save-button popup__button-submit">Сохранить</button>
         </form>
         <button id="close-popup-button" type="button" class="popup__close-button"></button>
@@ -53,12 +51,10 @@
       <div class="popup__content">
         <form id="add-form" name="form" class="popup__form" novalidate>
           <h2 class="popup__title">Новое место</h2>
-          <fieldset class="popup__fieldset">
           <input id="place-input" type="text" name="place" class="popup__input popup__input_type_title-place" placeholder="Название" minlength="2" maxlength="30" required>
           <span class="popup__error place-input-error"></span>
           <input id="link-input" type="url" name="link" class="popup__input popup__input_type_photo-link" placeholder="Ссылка на картинку" required>
           <span class="popup__error link-input-error"></span>
-        </fieldset>
           <button type="submit" class="popup__save-button popup__save-button_add popup__save-button_disabled">Создать</button>
         </form>
         <button id="close-popup-button-add" type="button" class="popup__close-button"></button>

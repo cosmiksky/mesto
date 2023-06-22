@@ -23,15 +23,15 @@ const popupImage = document.querySelector('.popup__image');
 const popupCaption = document.querySelector('.popup__caption');
 
 const closePopupEsc = evt => {
-  const openedPopup = document.querySelector('.popup_is-open');
   if (evt.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_is-open');
     closePopup(openedPopup);
   }
 };
 
 const closePopupOverlay = evt => {
-  const openedPopup = document.querySelector('.popup_is-open');
   if (evt.currentTarget === evt.target) {
+    const openedPopup = document.querySelector('.popup_is-open');
     closePopup(openedPopup);
   }
 };
@@ -39,13 +39,13 @@ const closePopupOverlay = evt => {
 function openPopup(popup) {
   popup.classList.add('popup_is-open');
   document.addEventListener('keydown', closePopupEsc);
-  popup.addEventListener('click', closePopupOverlay);
+  popup.addEventListener('mousedown', closePopupOverlay);
 };
 
 function closePopup(popup) {
   popup.classList.remove('popup_is-open');
   document.removeEventListener('keydown', closePopupEsc);
-  popup.removeEventListener('click', closePopupOverlay);
+  popup.removeEventListener('mousedown', closePopupOverlay);
 };
 
 initialCards.forEach(function(newCard){
@@ -80,8 +80,23 @@ function createCard(newCard){
 
 buttonOpenPopupImg.addEventListener('click', () => closePopupOverlay(buttonOpenPopupImg));
 buttonClosePopupImage.addEventListener('click', () => closePopup(buttonOpenPopupImg));
-buttonOpenPopupAdd.addEventListener('click', () => openPopup(addPopup));
+// buttonOpenPopupAdd.addEventListener('click', () => openPopup(addPopup));
 buttonClosePopupAdd.addEventListener('click', () => closePopup(addPopup));
+
+popupAddButton = document.querySelector('.popup__save-button_add');
+
+buttonOpenPopupAdd.addEventListener('click', function () {
+  const inputList = Array.from(addForm.querySelectorAll('.popup__input'));
+  const validityForm = inputList.every(function (input) {
+    return input.validity.valid;
+  });
+  if (!validityForm) {
+    popupAddButton.classList.add('popup__save-button_disabled');
+    popupAddButton.setAttribute('disabled', 'true');
+  }
+  openPopup(addPopup);
+});
+
 
 addForm.addEventListener('submit', function(event) {
   event.preventDefault();
