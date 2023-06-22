@@ -5,3 +5,9 @@
     width: 430px;
     min-height: 330px;
 }
+
+@media screen and (max-width: 1279px) {
+    .popup__content {
+        width: 282px;
+    }
+}
