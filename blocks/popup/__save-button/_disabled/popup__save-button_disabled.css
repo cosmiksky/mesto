@@ -5,3 +5,7 @@
     color: #000;
     cursor: none;
 }
+
+.popup__save-button_disabled:hover {
+    background-color: #fff;
+}
