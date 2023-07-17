@@ -67,14 +67,17 @@ const popupAddButton = document.querySelector('.popup__save-button_add');
 const formAddValidator = new FormValidator (config, addForm);
 formAddValidator.enableValidation();
 
-export const closePopupEsc = evt => {
+const formEditValidator = new FormValidator(config, editForm);
+formEditValidator.enableValidation();
+
+const closePopupEsc = evt => {
   if (evt.key === 'Escape') {
     const openedPopup = document.querySelector('.popup_is-open');
     closePopup(openedPopup);
   }
 };
 
-export const closePopupOverlay = evt => {
+const closePopupOverlay = evt => {
   if (evt.currentTarget === evt.target) {
     const openedPopup = document.querySelector('.popup_is-open');
     closePopup(openedPopup);
@@ -105,14 +108,6 @@ buttonOpenPopupAdd.addEventListener('click', () => openPopup(addPopup));
 buttonClosePopupAdd.addEventListener('click', () => closePopup(addPopup));
 
 buttonOpenPopupAdd.addEventListener('click', function () {
-  const inputList = Array.from(addForm.querySelectorAll('.popup__input'));
-  const validityForm = inputList.every(function (input) {
-    return input.validity.valid;
-  });
-  if (!validityForm) {
-    popupAddButton.classList.add('popup__save-button_disabled');
-    popupAddButton.setAttribute('disabled', true);
-  }
   openPopup(addPopup);
 });
 
