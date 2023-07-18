@@ -96,10 +96,15 @@ function closePopup(popup) {
   popup.removeEventListener('mousedown', closePopupOverlay);
 };
 
+function generateCard(newCard) {
+  const card = new Card(newCard, templateSelector);
+  return card.createCard();
+}
+
 initialCards.forEach((newCard) => {
-    const card = new Card(newCard, templateSelector);
-    const cardElement = card.createCard();
-    elementsList.prepend(cardElement);
+    // const card = new Card(newCard, templateSelector);
+    // const cardElement = card.createCard();
+    elementsList.prepend(generateCard(newCard));
 });
 
 buttonOpenPopupImg.addEventListener('click', () => closePopupOverlay(buttonOpenPopupImg));
@@ -124,9 +129,9 @@ addForm.addEventListener('submit', function(event) {
     link: value['link']
   };
 
-  const card = new Card(newCard, templateSelector);
-  const cardElement = card.createCard();
-  elementsList.prepend(cardElement);
+  // const card = new Card(newCard, templateSelector);
+  // const cardElement = card.createCard();
+  elementsList.prepend(generateCard(newCard));
   form.reset();
   closePopup(addPopup);
 });
