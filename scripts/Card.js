@@ -1,6 +1,6 @@
 import {openPopup} from './index.js';
 
-export const buttonOpenPopupImg = document.querySelector('#photo-popup');
+export const OpenPopupImg = document.querySelector('#photo-popup');
 const popupImage = document.querySelector('.popup__image');
 const popupCaption = document.querySelector('.popup__caption');
 
@@ -51,7 +51,7 @@ export class Card {
 
     const imgPopup = this._element.querySelector('.element__mask-group');
     imgPopup.addEventListener('click', function () {
-            openPopup(buttonOpenPopupImg);
+            openPopup(OpenPopupImg);
 
             popupImage.src = imgPopup.src;
             popupImage.alt = imgPopup.alt;
