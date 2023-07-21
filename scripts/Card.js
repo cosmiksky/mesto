@@ -1,6 +1,6 @@
 import {openPopup} from './index.js';
 
-export const OpenPopupImg = document.querySelector('#photo-popup');
+export const imagePopup = document.querySelector('#photo-popup');
 const popupImage = document.querySelector('.popup__image');
 const popupCaption = document.querySelector('.popup__caption');
 
@@ -26,8 +26,10 @@ export class Card {
     this._setEventListeners();
 
     this._element.querySelector('.element__title').textContent = this._titleEl;
-    this._element.querySelector('.element__mask-group').src = this._imgCard;
-    this._element.querySelector('.element__mask-group').alt = this._titleEl;
+
+    const likeButton = this._element.querySelector('.element__mask-group');
+    likeButton.src = this._imgCard;
+    likeButton.alt = this._titleEl;
 
     return this._element;
   }
@@ -51,7 +53,7 @@ export class Card {
 
     const imgPopup = this._element.querySelector('.element__mask-group');
     imgPopup.addEventListener('click', function () {
-            openPopup(OpenPopupImg);
+            openPopup(imagePopup);
 
             popupImage.src = imgPopup.src;
             popupImage.alt = imgPopup.alt;

@@ -1,4 +1,4 @@
-import {Card, OpenPopupImg} from './Card.js';
+import {Card, imagePopup} from './Card.js';
 import {FormValidator} from './FormValidator.js';
 
 const initialCards = [
@@ -58,7 +58,7 @@ const buttonClosePopupAdd = document.querySelector('#close-popup-button-add');
 // const inputLink = template.querySelector('#link-input');
 
 const buttonClosePopupImage = document.querySelector('#close-popup-button-img');
-// const OpenPopupImg = document.querySelector('#photo-popup');
+// const imagePopup = document.querySelector('#photo-popup');
 // const popupImage = document.querySelector('.popup__image');
 // const popupCaption = document.querySelector('.popup__caption');
 
@@ -107,8 +107,8 @@ initialCards.forEach((newCard) => {
     elementsList.prepend(generateCard(newCard));
 });
 
-OpenPopupImg.addEventListener('click', () => closePopupOverlay(OpenPopupImg));
-buttonClosePopupImage.addEventListener('click', () => closePopup(OpenPopupImg));
+imagePopup.addEventListener('click', () => closePopupOverlay(imagePopup));
+buttonClosePopupImage.addEventListener('click', () => closePopup(imagePopup));
 buttonOpenPopupAdd.addEventListener('click', () => openPopup(addPopup));
 buttonClosePopupAdd.addEventListener('click', () => closePopup(addPopup));
 
