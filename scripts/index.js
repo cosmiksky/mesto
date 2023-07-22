@@ -120,7 +120,9 @@ buttonClosePopupImage.addEventListener('click', () => closePopup(imagePopup));
 buttonOpenPopupAdd.addEventListener('click', () => openPopup(addPopup));
 buttonClosePopupAdd.addEventListener('click', () => closePopup(addPopup));
 
+const formEl = {};
 buttonOpenPopupAdd.addEventListener('click', function () {
+  formAddValidator.disableSubmitButton();
   openPopup(addPopup);
 });
 
