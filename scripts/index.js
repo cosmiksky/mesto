@@ -1,4 +1,4 @@
-import {Card, imagePopup} from './Card.js';
+import {Card} from './Card.js';
 import {FormValidator} from './FormValidator.js';
 
 const initialCards = [
@@ -58,9 +58,9 @@ const buttonClosePopupAdd = document.querySelector('#close-popup-button-add');
 // const inputLink = template.querySelector('#link-input');
 
 const buttonClosePopupImage = document.querySelector('#close-popup-button-img');
-// const imagePopup = document.querySelector('#photo-popup');
-// const popupImage = document.querySelector('.popup__image');
-// const popupCaption = document.querySelector('.popup__caption');
+const imagePopup = document.querySelector('#photo-popup');
+const popupImage = imagePopup.querySelector('.popup__image');
+const popupCaption = imagePopup.querySelector('.popup__caption');
 
 const popupAddButton = document.querySelector('.popup__save-button_add');
 
@@ -84,7 +84,7 @@ const closePopupOverlay = evt => {
   }
 };
 
-export function openPopup(popup) {
+function openPopup(popup) {
   popup.classList.add('popup_is-open');
   document.addEventListener('keydown', closePopupEsc);
   popup.addEventListener('mousedown', closePopupOverlay);
@@ -97,8 +97,16 @@ function closePopup(popup) {
 };
 
 function generateCard(newCard) {
-  const card = new Card(newCard, templateSelector);
+  const card = new Card(newCard, templateSelector, handleCardClick);
   return card.createCard();
+}
+
+function handleCardClick(obj) {
+  popupImage.src = obj.link;
+  popupImage.alt = obj.name;
+  popupCaption.textContent = obj.name;
+
+  openPopup(imagePopup);
 }
 
 initialCards.forEach((newCard) => {
