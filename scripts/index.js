@@ -121,7 +121,7 @@ buttonOpenPopupAdd.addEventListener('click', () => openPopup(addPopup));
 buttonClosePopupAdd.addEventListener('click', () => closePopup(addPopup));
 
 buttonOpenPopupAdd.addEventListener('click', function () {
-  formAddValidator._disableSubmitButton();
+  formAddValidator.disableSubmitButton();
   openPopup(addPopup);
 });
 
