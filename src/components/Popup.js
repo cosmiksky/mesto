@@ -29,6 +29,6 @@ export class Popup {
     setEventListeners() {
         this._templateSelector.querySelector('.popup__close-button').addEventListener('click', () => { this.close()});
         
-        this._templateSelector.addEventListener('mousedown', this._handleOverlayClose);
+        document.addEventListener('mousedown', this._handleOverlayClose);
     }
 }

@@ -166,7 +166,6 @@ function submitProfile(data) {
 
 function openProfile() {
   profileUserInfo.open();
-  formEditValidator.disableSubmitButton();
   profileUserInfo.setInputValues(userInfo.getUserInfo());
 }
 
