@@ -11,3 +11,8 @@
         margin-right: auto;
     }
 }
+
+.profile__image:hover {
+    opacity: .2;
+    transition: opacity .4s;
+}

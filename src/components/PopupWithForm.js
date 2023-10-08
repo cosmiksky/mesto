@@ -1,4 +1,4 @@
-import {Popup} from './Popup';
+import {Popup} from './Popup.js';
 
 export class PopupWithForm extends Popup {
 constructor(templateSelector, handleSubmit) {
@@ -6,6 +6,7 @@ constructor(templateSelector, handleSubmit) {
         this._handleSubmit = handleSubmit;
         this._formPopup = this._templateSelector.querySelector('.popup__form');
         this._inputList = this._formPopup.querySelectorAll('.popup__input');
+        this._buttonSave = this._formPopup.querySelector('.popup__save-button');
     }
 
     close() {
@@ -34,4 +35,15 @@ constructor(templateSelector, handleSubmit) {
         });
         return this._inputValues;
     }
+
+    renderLoading(loading, newText) {
+        if (!this._buttonSave) return
+  
+         if (loading) {
+         this._defaultText = this._buttonSave.textContent
+         this._buttonSave.textContent = newText
+         } else {
+         this._buttonSave.textContent = this._defaultText
+        }
+       }
 }
