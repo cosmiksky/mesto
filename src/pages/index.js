@@ -7,7 +7,7 @@ import { PopupWithForm } from '../components/PopupWithForm.js';
 import { UserInfo } from '../components/UserInfo.js';
 import { Api } from '../components/Api.js';
 import { PopupWithConfirmation } from '../components/PopupWithConfirmation.js';
-
+import { config, buttonOpenPopupProfile, editPopup, editForm, newTemplateSelector, elementsList, addForm, buttonOpenPopupAdd, addPopup, imagePopup, deletePopup, popupAvatar, btnAvatar } from '../utils/constants.js';
 
 const api = new Api({
   url: 'https://mesto.nomoreparties.co/v1/cohort-76',
@@ -24,8 +24,8 @@ Promise.all([api.getAllCards(), api.getUserInfo()])
     cardSection.rendererItems(resCards);
     userInfo.setUserInfo(resUser, userId)
   })
-  .catch((error) => {
-    console.log(error)
+  .catch(() => {
+    console.error
   })
 
 
@@ -35,37 +35,12 @@ Promise.all([api.getAllCards(), api.getUserInfo()])
 //   cardSection.rendererItems(data)
 // })
 
-const config = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__save-button',
-  inactiveButtonClass: 'popup__save-button_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible'
-};
-
-const buttonOpenPopupProfile = document.querySelector('#open-popup-editButton');
-const editPopup = document.querySelector('#edit-popup');
-const editForm = document.querySelector('#edit-form');
-
-const newTemplateSelector = '#template__el';
-
-const elementsList = document.querySelector('.elements__list');
-
-const addForm = document.querySelector('#add-form');
-const buttonOpenPopupAdd = document.querySelector('#open-popup-addButton');
-const addPopup = document.querySelector('#add-popup');
-const imagePopup = document.querySelector('#photo-popup');
-
 
 const formAddValidator = new FormValidator (config, addForm);
 formAddValidator.enableValidation();
 
 const formEditValidator = new FormValidator(config, editForm);
 formEditValidator.enableValidation();
-
-const deletePopup = document.querySelector('#delete-popup');
-let userId = '';
 
 const popupWithConfirmation = new PopupWithConfirmation(deletePopup, handleDeleteCard);
 popupWithConfirmation.setEventListeners();
@@ -78,13 +53,15 @@ function handleDeleteCard(data) {
     data.handleDelete();
     popupWithConfirmation.close();
  })
-  .catch((error) => {
-    console.log(error)
+  .catch(() => {
+    console.error
   })
   .finally(() => {
     popupWithConfirmation.renderLoading(false)
   })
 }
+
+let userId = '';
 
 function generateCard(data) {
   const card = new Card(data, userId, newTemplateSelector, handleCardClick, popupWithConfirmation,
@@ -130,8 +107,8 @@ function handleSubmit(data) {
     cardSection.addItem(generateCard(data));
     formAddPopup.close()
   })
-  .catch((error) => {
-    console.log(error)
+  .catch(() => {
+    console.error
   })
   //cardSection.addItem(generateCard(data));
   //console.log(data);
@@ -150,21 +127,23 @@ function openAddPopup() {
 
 buttonOpenPopupAdd.addEventListener('click', openAddPopup)
 
+const profileUserInfo = new PopupWithForm(editPopup, submitProfile)
+profileUserInfo.setEventListeners();
+
 const userInfo = new UserInfo({
   nameProfile: '.profile__title',
   subtitleProfile: '.profile__subtitle',
   avatarProfile: '.profile__image'
 });
 
-const profileUserInfo = new PopupWithForm(editPopup, submitProfile)
-profileUserInfo.setEventListeners();
-
 function submitProfile(data) {
   profileUserInfo.renderLoading(true, 'Сохранение...')
   api.pathUserInfo(data)
   .then(data => userInfo.setUserInfo(data))
   .then(() => profileUserInfo.close())
-  .catch(error => console.log(error))
+  .catch(() => {
+    console.error
+  })
   // userInfo.setUserInfo(data);
   // profileUserInfo.close();
   .finally(() => {
@@ -179,7 +158,6 @@ function openProfile() {
 
 buttonOpenPopupProfile.addEventListener('click', () => openProfile());
 
-const popupAvatar = document.querySelector('#edit-popup-avatar');
 const editPopupAvatar = new PopupWithForm(popupAvatar, handleSubmitAvatar);
 editPopupAvatar.setEventListeners();
 
@@ -190,15 +168,14 @@ function handleSubmitAvatar(data) {
     userInfo.setUserInfo(res)
     editPopupAvatar.close()
   })
-  .catch((error) => {
-    console.log(error)
+  .catch(() => {
+    console.error
   })
   .finally(() => {
     editPopupAvatar.renderLoading(false)
   })
 }
 
-const btnAvatar = document.querySelector('.profile__image')
 btnAvatar.addEventListener('click', () => {
   validPopupAvatar.disableSubmitButton();
   editPopupAvatar.open()
