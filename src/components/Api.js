@@ -4,21 +4,19 @@ export class Api {
         this._headers = headers;
     }
 
+    _checkResponse(res) {
+        if(res.ok) {
+            return res.json()
+        }
+        throw new Error('error')
+    }
+
     getAllCards() {
         return fetch(`${this._url}/cards`, {
             method: 'GET',
             headers: this._headers,
         })
-        .then((response) => {
-            if(response.ok) {
-                return response.json()
-            }
-
-            throw new Error('error')
-        })
-        .catch((error) => {
-            console.log(`error`)
-        })
+        .then(this._checkResponse)
     }
 
     getUserInfo() {
@@ -26,15 +24,7 @@ export class Api {
             method: 'GET',
             headers: this._headers,
         })
-        .then(response => {
-            if(response.ok) {
-                return response.json()
-            }
-            throw new Error('error')
-        })
-        .catch((error) => {
-            console.log(`error`)
-        })
+        .then(this._checkResponse)
     }
 
     pathUserInfo(data) {
@@ -45,15 +35,7 @@ export class Api {
                 name: data.name,
                 about: data.about})
         })
-        .then(response => {
-            if(response.ok) {
-                return response.json()
-            }
-            throw new Error('error')
-        })
-        .catch((error) => {
-            console.log(`error`)
-        })
+        .then(this._checkResponse)
     }
 
     createCard(data) {
@@ -64,15 +46,7 @@ export class Api {
                 name: data.name,
                 link: data.link})
         })
-        .then(response => {
-            if(response.ok) {
-                return response.json()
-            }
-            throw new Error('error')
-        })
-        .catch((error) => {
-            console.log(`error`)
-        })
+        .then(this._checkResponse)
     }
 
     deleteCard(cardId) {
@@ -80,14 +54,7 @@ export class Api {
             method: 'DELETE',
             headers: this._headers,
         })
-        .then(response => {
-            if(response.ok) {
-                return response.json()
-            }
-        })
-        .catch((error) => {
-            console.log(error)
-        })
+        .then(this._checkResponse)
     }
 
     likeCard(cardId) {
@@ -95,15 +62,7 @@ export class Api {
             method: 'PUT',
             headers: this._headers,
         })
-        .then(response => {
-            if(response.ok) {
-                return response.json()
-            }
-            throw new Error('error')
-        })
-        .catch((error) => {
-            console.log(error)
-        })
+        .then(this._checkResponse)
     }
 
     dislikeCard(cardId) {
@@ -111,15 +70,7 @@ export class Api {
             method: 'DELETE',
             headers: this._headers,
         })
-        .then(response => {
-            if(response.ok) {
-                return response.json()
-            }
-            throw new Error('error')
-        })
-        .catch((error) => {
-            console.log(error)
-        })
+        .then(this._checkResponse)
     }
 
     changeAvatar(data) {
@@ -130,14 +81,6 @@ export class Api {
                 avatar: data.avatar
             })
         })
-        .then(response => {
-            if(response.ok) {
-                return response.json()
-            }
-            throw new Error('error')
-        })
-        .catch((error) => {
-            console.log(error)
-        }) 
+        .then(this._checkResponse) 
     }
 }
