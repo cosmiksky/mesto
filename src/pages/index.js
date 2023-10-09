@@ -24,6 +24,9 @@ Promise.all([api.getAllCards(), api.getUserInfo()])
     cardSection.rendererItems(resCards);
     userInfo.setUserInfo(resUser, userId)
   })
+  .catch((error) => {
+    console.log(error)
+  })
 
 
 // api.getAllCards()
