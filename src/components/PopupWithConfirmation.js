@@ -4,8 +4,7 @@ export class PopupWithConfirmation extends Popup {
 constructor( templateSelector, deleteCard) {
         super(templateSelector);
         this._deleteCard = deleteCard;
-        this._confirmButton = document.querySelector('#agree-delete');
-        this._templateSelector = templateSelector;
+        this._confirmButton = this._popup.querySelector('#agree-delete');
     }
 
     open(cardId) {
