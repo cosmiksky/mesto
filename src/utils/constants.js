@@ -22,6 +22,7 @@ export const imagePopup = '#photo-popup';
 
 export const deletePopup = '#delete-popup';
 
-export const popupAvatar = '#edit-popup-avatar';
+export const formAvatar = document.querySelector('#edit-form-popup');
+export const popupAvatar =  '#edit-popup-avatar';
 
 export const btnAvatar = document.querySelector('.profile__image');

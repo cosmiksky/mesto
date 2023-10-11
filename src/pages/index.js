@@ -7,7 +7,7 @@ import { PopupWithForm } from '../components/PopupWithForm.js';
 import { UserInfo } from '../components/UserInfo.js';
 import { Api } from '../components/Api.js';
 import { PopupWithConfirmation } from '../components/PopupWithConfirmation.js';
-import { config, buttonOpenPopupProfile, editPopup, editForm, newTemplateSelector, elementsList, addForm, buttonOpenPopupAdd, addPopup, imagePopup, deletePopup, popupAvatar, btnAvatar } from '../utils/constants.js';
+import { config, buttonOpenPopupProfile, editPopup, editForm, newTemplateSelector, elementsList, addForm, buttonOpenPopupAdd, addPopup, imagePopup, deletePopup, popupAvatar, formAvatar, btnAvatar } from '../utils/constants.js';
 
 const api = new Api({
   url: 'https://mesto.nomoreparties.co/v1/cohort-76',
@@ -25,7 +25,7 @@ Promise.all([api.getAllCards(), api.getUserInfo()])
     userInfo.setUserInfo(resUser, userId)
   })
   .catch(() => {
-    console.error
+    console.error(err)
   })
 
 
@@ -54,7 +54,7 @@ function handleDeleteCard(data) {
     popupWithConfirmation.close();
  })
   .catch(() => {
-    console.error
+    console.error(err)
   })
   .finally(() => {
     popupWithConfirmation.renderLoading(false)
@@ -108,7 +108,7 @@ function handleSubmit(data) {
     formAddPopup.close()
   })
   .catch(() => {
-    console.error
+    console.error(err)
   })
   //cardSection.addItem(generateCard(data));
   //console.log(data);
@@ -120,7 +120,6 @@ function handleSubmit(data) {
 }
 
 function openAddPopup() {
-  console.log('click');
   formAddValidator.disableSubmitButton();
   formAddPopup.open();
 }
@@ -142,7 +141,7 @@ function submitProfile(data) {
   .then(data => userInfo.setUserInfo(data))
   .then(() => profileUserInfo.close())
   .catch(() => {
-    console.error
+    console.error(err)
   })
   // userInfo.setUserInfo(data);
   // profileUserInfo.close();
@@ -169,7 +168,7 @@ function handleSubmitAvatar(data) {
     editPopupAvatar.close()
   })
   .catch(() => {
-    console.error
+    console.error(err)
   })
   .finally(() => {
     editPopupAvatar.renderLoading(false)
@@ -177,9 +176,10 @@ function handleSubmitAvatar(data) {
 }
 
 btnAvatar.addEventListener('click', () => {
-  validPopupAvatar.disableSubmitButton();
-  editPopupAvatar.open()
+  editPopupAvatar.open();
+  //validPopupAvatar.disableSubmitButton();
 })
 
-const validPopupAvatar = new FormValidator(config, popupAvatar)
-validPopupAvatar.enableValidation()
+const validPopupAvatar = new FormValidator(config, formAvatar)
+validPopupAvatar.enableValidation();
+
