@@ -70,12 +70,18 @@ function generateCard(data) {
   .then((data) => {
     card.updateLikes(data)
   })
+  .catch(() => {
+    console.error(err)
+  })
   },
     
   dislikeCard: (cardId) => {
     api.dislikeCard(cardId)
   .then((data) => {
     card.updateLikes(data)
+  })
+  .catch(() => {
+    console.error(err)
   })
   }
 });
