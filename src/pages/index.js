@@ -177,7 +177,8 @@ function handleSubmitAvatar(data) {
 
 btnAvatar.addEventListener('click', () => {
   editPopupAvatar.open();
-  //validPopupAvatar.disableSubmitButton();
+  
+  validPopupAvatar.disableSubmitButton();
 })
 
 const validPopupAvatar = new FormValidator(config, formAvatar)
